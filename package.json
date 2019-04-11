@@ -1,0 +1,22 @@
+{
+  "name": "font-end",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "bayka",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.26.3",
+    "grunt-php": "^1.5.1",
+    "gulp": "github:gulpjs/gulp",
+    "gulp-connect-php": "^1.0.3",
+    "gulp-sass": "^4.0.2",
+    "node-sass": "^4.11.0"
+  },
+  "dependencies": {
+    "bootstrap": "^4.3.1"
+  }
+}

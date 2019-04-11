@@ -1,0 +1,33 @@
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+.menu a {
+    color: #fff;
+    margin-left: 15px;
+}
+
+.menu a:hover {
+    text-decoration: none;
+    color: #8bf4f5;
+}
+
+.main h3 {
+    margin: 0px;
+}
+
+.menu-top {
+    text-align: right;
+    padding: 12px 32px 2px 0px;
+    background: #3c763d;
+}
+
+.main {
+    padding: 20px;
+}
+
+ul.menu li {
+    display: inline;
+    margin-left: 10px;
+}
