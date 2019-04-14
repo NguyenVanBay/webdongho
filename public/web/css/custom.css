@@ -1,0 +1,15 @@
+
+span.cart-fa {
+    display: block;
+    position: absolute;
+    top: 12px;
+    left: 18px;
+    font-size: 20px;
+    color: #fff;
+}
+
+.cdz-slideshow .owl-carousel .owl-nav [class*='owl-'] {
+
+    color: #282828 !important;
+    border: none !important;
+}

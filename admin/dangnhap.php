@@ -1,6 +1,7 @@
 <?php 
 
 include("../connection.php");
+
 if (isset($_POST['login'])) {
     $user = $_POST['username'];
     $pass = $_POST['password'];
@@ -8,7 +9,7 @@ if (isset($_POST['login'])) {
     if ($user == "" || $pass == "") {
         echo ("<script language = javascript>alert('Tên đăng nhập hoặc mật khẩu không được để trống')</script>");
     } else {
-        $sql = "SELECT* FROM tbl_admin WHERE NameAdmin = '$user' AND Pass = '$pass'";
+        $sql = "SELECT* FROM admin WHERE name = '$user' AND password = '$pass'";
         $kt = mysqli_query($conn, $sql);
         $row = mysqli_num_rows($kt);
         if ($row == 0) {

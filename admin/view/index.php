@@ -1,0 +1,1 @@
+<h3 style="color: red; margin-left: 200px; margin-top: 50px;"><?php echo('Chào mừng đến với trang quản trị website') ?></h3>
