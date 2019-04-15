@@ -22,6 +22,7 @@ $query = mysqli_query($conn, $sql);
                     <th class="sorting_asc" tabindex="0" aria-controls="bootstrap-data-table-export" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 209px;">Sản phẩm</th>
                     <th class="sorting_asc" tabindex="0" aria-controls="bootstrap-data-table-export" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 209px;">Tồn thực tế</th>
                     <th class="sorting_asc" tabindex="0" aria-controls="bootstrap-data-table-export" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 209px;">Tồn lý thuyết</th>
+                    <th class="sorting_asc" tabindex="0" aria-controls="bootstrap-data-table-export" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 209px;">Sản phẩm lỗi</th>
                     <th class="sorting_asc" tabindex="0" aria-controls="bootstrap-data-table-export" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 209px;">Hành động</th>
 
                 </tr>
@@ -34,6 +35,7 @@ $query = mysqli_query($conn, $sql);
                         <td><?php echo ($row["name"]) ?></td>
                         <td><?php echo ($row["inventory"]) ?></td>
                         <td><?php echo ($row["inventory_actual"]) ?></td>
+                        <td><?php echo ($row["error"]) ?></td>
                         <td>
                             <a href="index.php?page=editwarehouse&id=<?php echo $row["id"] ?>"><i class="fa fa-edit"></i></a>
                     </tr>
@@ -46,6 +48,7 @@ $query = mysqli_query($conn, $sql);
                     <th class="sorting_asc" tabindex="0" aria-controls="bootstrap-data-table-export" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 209px;">Sản phẩm</th>
                     <th class="sorting_asc" tabindex="0" aria-controls="bootstrap-data-table-export" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 209px;">Tồn thực tế</th>
                     <th class="sorting_asc" tabindex="0" aria-controls="bootstrap-data-table-export" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 209px;">Tồn lý thuyết</th>
+                    <th class="sorting_asc" tabindex="0" aria-controls="bootstrap-data-table-export" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 209px;">Sản phẩm lỗi</th>
                     <th class="sorting_asc" tabindex="0" aria-controls="bootstrap-data-table-export" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 209px;">Hành động</th>
                 </tr>
             </tfoot>

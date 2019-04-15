@@ -7,7 +7,8 @@ $row = mysqli_fetch_array($db);
 if (isset($_POST['bt_submit'])) {
     $id = $_POST['id'];
     $name = $_POST['name'];
-	$icon = $_POST['icon'];
+    $icon = $_POST['icon'];
+	$sort = $_POST['sort'];
 	
     if (isset($_FILES["image"])) {
 
@@ -41,7 +42,7 @@ if (isset($_POST['bt_submit'])) {
                         unlink('../public/upload/category/' . $row['image']);
                     }
 
-                    $sql = "UPDATE category SET name = '$name', icon = '$icon', image = '$img' WHERE id ='$id' ";
+                    $sql = "UPDATE category SET name = '$name', icon = '$icon', image = '$img', sort = '$sort' WHERE id ='$id' ";
 
                     if (mysqli_query($conn, $sql)) {
                         echo ('<script>alert("Cập nhật thành công"); location.href="index.php?page=category"</script>');
@@ -52,7 +53,7 @@ if (isset($_POST['bt_submit'])) {
             }
         }
     } else {
-		$sql = "UPDATE category SET name = '$name', icon = '$icon' WHERE id ='$id' ";
+		$sql = "UPDATE category SET name = '$name', icon = '$icon' , sort = '$sort' WHERE id ='$id' ";
         if (mysqli_query($conn, $sql)) {
             echo ('<script>alert("Cập nhật thành công"); location.href="index.php?page=category"</script>');
         }
@@ -74,6 +75,11 @@ if (isset($_POST['bt_submit'])) {
 		<tr>
             <td style="font-weight: bold;">Icon</td>
             <td><input type="text" class="form-control" name="icon" value="<?php echo ($row["icon"]) ?>"></td>
+        </tr>
+
+        <tr>
+            <td style="font-weight: bold;">Vị trí thanh menu</td>
+            <td><input type="text" class="form-control" name="sort" value="<?php echo ($row["sort"]) ?>"></td>
         </tr>
     <table>
 

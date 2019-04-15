@@ -13,8 +13,8 @@ include("../connection.php");
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Sufee Admin - HTML5 Admin Template</title>
-    <meta name="description" content="Sufee Admin - HTML5 Admin Template">
+    <title>Nguyễn Văn Bảy - IT_PTIT</title>
+    <meta name="description" content="Xmenkingofstar">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="apple-touch-icon" href="../public/admin/apple-icon.png">
@@ -44,6 +44,12 @@ include("../connection.php");
     <script src="../public/Datatables/jquery-3.3.1.js"></script>
     <script src="../public/Datatables/jquery.dataTables.js"></script>
     <script src="../public/Datatables/dataTables.bootstrap4.js"></script>
+
+    <!-- json -->
+    <script src="../public/json/json_parse.js"></script>
+    <script src="../public/json/json_parse_state.js"></script>
+    <script src="../public/json/json2.js"></script>
+    <script src="../public/json/cycle.js"></script>
 
     <!-- <link href="../public/DataTables/AutoFill/css/autoFill.bootstrap4.css" />
     <link href="../public/DataTables/Buttons/css/buttons.bootstrap4.css" />
@@ -81,8 +87,8 @@ include("../connection.php");
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="#"><img src="../public/admin/images/logo.png" alt="Logo"></a>
-                <a class="navbar-brand hidden" href="#"><img src="../public/admin/images/logo2.png" alt="Logo"></a>
+                <a class="navbar-brand" href="#">Xmenkingofstar</a>
+                <a class="navbar-brand hidden" href="#">X</a>
             </div>
 
             <div id="main-menu" class="main-menu collapse navbar-collapse">
@@ -99,7 +105,7 @@ include("../connection.php");
                         </ul>
                     </li>
                     <li class="menu-item-has-children dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-laptop"></i>Danh mục loại bài viết</a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-rub"></i>Danh mục loại bài viết</a>
                         <ul class="sub-menu children dropdown-menu">
                             <li><i class="fa fa-puzzle-piece"></i><a href="?page=new-group">Loại bài viết</a></li>
                             <li><i class="fa fa-id-badge"></i><a href="?page=addnew-group">Thêm loại bài viết</a></li>
@@ -107,7 +113,7 @@ include("../connection.php");
                     </li>
 
                     <li class="menu-item-has-children dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-laptop"></i>Bài viết</a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-anchor"></i>Bài viết</a>
                         <ul class="sub-menu children dropdown-menu">
                             <li><i class="fa fa-puzzle-piece"></i><a href="?page=new">Bài viết</a></li>
                             <li><i class="fa fa-id-badge"></i><a href="?page=addnew">Thêm bài viết</a></li>
@@ -115,7 +121,7 @@ include("../connection.php");
                     </li>
 
                     <li class="menu-item-has-children dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-laptop"></i>Loại sản phẩm</a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-bell-o"></i>Loại sản phẩm</a>
                         <ul class="sub-menu children dropdown-menu">
                             <li><i class="fa fa-puzzle-piece"></i><a href="?page=category">Loại sản phẩm</a></li>
                             <li><i class="fa fa-id-badge"></i><a href="?page=addcategory">Thêm sản phẩm</a></li>
@@ -123,7 +129,7 @@ include("../connection.php");
                     </li>
 
                     <li class="menu-item-has-children dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-laptop"></i>Nhà cung cấp</a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-briefcase"></i>Nhà cung cấp</a>
                         <ul class="sub-menu children dropdown-menu">
                             <li><i class="fa fa-puzzle-piece"></i><a href="?page=producer">Nhà cung cấp</a></li>
                             <li><i class="fa fa-id-badge"></i><a href="?page=addproducer">Thêm nhà cung cấp</a></li>
@@ -131,75 +137,46 @@ include("../connection.php");
                     </li>
 
                     <li class="menu-item-has-children dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-laptop"></i>Sản phẩm</a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-eraser"></i>Sản phẩm</a>
                         <ul class="sub-menu children dropdown-menu">
-                            <li><i class="fa fa-puzzle-piece"></i><a href="?page=warehouse">Sản phẩm</a></li>
-                            <li><i class="fa fa-id-badge"></i><a href="?page=addwarehousing">Thêm sản phẩm</a></li>
+                            <li><i class="fa fa-puzzle-piece"></i><a href="?page=product">Sản phẩm</a></li>
+                            <li><i class="fa fa-id-badge"></i><a href="?page=addproduct">Thêm sản phẩm</a></li>
                         </ul>
                     </li>
 
                     <li class="menu-item-has-children dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-laptop"></i>Quản lý kho</a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-eraser"></i>Quản lý tồn kho</a>
                         <ul class="sub-menu children dropdown-menu">
-                            <li><i class="fa fa-puzzle-piece"></i><a href="?page=product">Sản phẩm trong kho</a></li>
+                            <li><i class="fa fa-puzzle-piece"></i><a href="?page=warehouse">Danh sách tồn kho</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-eraser"></i>Nhập kho</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="fa fa-puzzle-piece"></i><a href="?page=warehousing">DS phiếu nhập</a></li>
                             <li><i class="fa fa-id-badge"></i><a href="?page=addwarehousing">Nhập kho</a></li>
                         </ul>
                     </li>
 
                     <li class="menu-item-has-children dropdown">
-                        <a href="?page=province" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-laptop"></i>Quản lý khu vực</a>
-
-                    </li>
-
-                    <li class="menu-item-has-children dropdown">
-                        <a href="?page=bill" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-laptop"></i>Đơn hàng</a>
-
-                    </li>
-
-                    <li class="menu-item-has-children dropdown">
-                        <a href="../public/admin/#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>Forms</a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-eraser"></i>Đơn hàng</a>
                         <ul class="sub-menu children dropdown-menu">
-                            <li><i class="menu-icon fa fa-th"></i><a href="../public/admin/forms-basic.html">Basic Form</a></li>
-                            <li><i class="menu-icon fa fa-th"></i><a href="../public/admin/forms-advanced.html">Advanced Form</a></li>
-                        </ul>
-                    </li>
-
-                    <h3 class="menu-title">Icons</h3><!-- /.menu-title -->
-
-                    <li class="menu-item-has-children dropdown">
-                        <a href="../public/admin/#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-tasks"></i>Icons</a>
-                        <ul class="sub-menu children dropdown-menu">
-                            <li><i class="menu-icon fa fa-fort-awesome"></i><a href="../public/admin/font-fontawesome.html">Font Awesome</a></li>
-                            <li><i class="menu-icon ti-themify-logo"></i><a href="../public/admin/font-themify.html">Themefy Icons</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="../public/admin/widgets.html"> <i class="menu-icon ti-email"></i>Widgets </a>
-                    </li>
-                    <li class="menu-item-has-children dropdown">
-                        <a href="../public/admin/#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-bar-chart"></i>Charts</a>
-                        <ul class="sub-menu children dropdown-menu">
-                            <li><i class="menu-icon fa fa-line-chart"></i><a href="../public/admin/charts-chartjs.html">Chart JS</a></li>
-                            <li><i class="menu-icon fa fa-area-chart"></i><a href="../public/admin/charts-flot.html">Flot Chart</a></li>
-                            <li><i class="menu-icon fa fa-pie-chart"></i><a href="../public/admin/charts-peity.html">Peity Chart</a></li>
-
+                            <li><i class="fa fa-puzzle-piece"></i><a href="?page=bill">DS Đơn hàng</a></li>
                         </ul>
                     </li>
 
                     <li class="menu-item-has-children dropdown">
-                        <a href="../public/admin/#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-area-chart"></i>Maps</a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-eraser"></i>Quản lý khu vực</a>
                         <ul class="sub-menu children dropdown-menu">
-                            <li><i class="menu-icon fa fa-map-o"></i><a href="../public/admin/maps-gmap.html">Google Maps</a></li>
-                            <li><i class="menu-icon fa fa-street-view"></i><a href="../public/admin/maps-vector.html">Vector Maps</a></li>
+                            <li><i class="fa fa-puzzle-piece"></i><a href="?page=province">DS khu vực</a></li>
                         </ul>
                     </li>
-                    <h3 class="menu-title">Extras</h3><!-- /.menu-title -->
+
                     <li class="menu-item-has-children dropdown">
-                        <a href="../public/admin/#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-glass"></i>Pages</a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-eraser"></i>Font and icon</a>
                         <ul class="sub-menu children dropdown-menu">
-                            <li><i class="menu-icon fa fa-sign-in"></i><a href="../public/admin/page-login.html">Login</a></li>
-                            <li><i class="menu-icon fa fa-sign-in"></i><a href="../public/admin/page-register.html">Register</a></li>
-                            <li><i class="menu-icon fa fa-paper-plane"></i><a href="../public/admin/pages-forget.html">Forget Pass</a></li>
+                            <li><i class="fa fa-puzzle-piece"></i><a href="?page=icon">Font and icon</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -298,7 +275,7 @@ include("../connection.php");
                 <div class="col-sm-5">
                     <div class="user-area dropdown float-right">
                         <a href="../public/admin/#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img class="user-avatar rounded-circle" src="../public/admin/images/admin.jpg" alt="User Avatar">
+                            <img class="user-avatar rounded-circle" src="../public/upload/avata/avata.jpg" alt="User Avatar">
                         </a>
 
                         <div class="user-menu dropdown-menu">
@@ -431,8 +408,11 @@ include("../connection.php");
                     case 'addwarehousing':
                         require 'view/warehouse/addwarehousing.php';
                         break;
-                    case 'warehouse_detail':
-                        require 'view/warehouse/warehouse_detail.php';
+                    case 'warehousing':
+                        require 'view/warehouse/warehousing.php';
+                        break;
+                    case 'warehousing_detail':
+                        require 'view/warehouse/warehousing_detail.php';
                         break;
                         // end quản lý KHO.
 
@@ -469,13 +449,20 @@ include("../connection.php");
                     case 'bill':
                         require 'view/bill/bill.php';
                         break;
-                    case 'bill_detail':
-                        require 'view/bill/bill_detail.php';
+                    case 'billdetail':
+                        require 'view/bill/billdetail.php';
                         break;
-                    case 'chanstatus':
-                        require 'view/bill/chanstatus.php';
+                    case 'updatestatus':
+                        require 'view/bill/updatestatus.php';
                         break;
                         // end quản lý đơn hàng.
+
+
+                        // quản lý icon
+                    case 'icon':
+                        require 'view/icon/icon.php';
+                        break;
+                        // end quản lý icon
 
                     default:
                         require 'view/index.php';

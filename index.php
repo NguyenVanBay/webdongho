@@ -1,3 +1,11 @@
+<?php
+session_start();
+
+include("connection.php");
+include("view/config/config.php");
+
+?>
+
 <!DOCTYPE html>
 <html lang="en" id="top" class=" js no-touch localstorage no-ios" style="">
 
@@ -33,6 +41,10 @@
     <link rel="stylesheet" type="text/css" href="public/web/css/bootstrap-slider.min.css" media="all">
     <link rel="stylesheet" type="text/css" href="public/web/css/print.css" media="print">
     <link rel="stylesheet" type="text/css" href="public/web/css/custom.css">
+
+
+    <script type="text/javascript" src="public/jQuery-3.3.1/jquery-3.3.1.min.js"></script>
+
     <script type="text/javascript" src="public/web/js/prototype.js"></script>
     <script type="text/javascript" src="public/web/js/ccard.js"></script>
     <script type="text/javascript" src="public/web/js/validation.js"></script>
@@ -77,6 +89,9 @@
     <script type="text/javascript" src="public/web/js/ajaxcart_effect.js"></script>
     <script type="text/javascript" src="public/web/js/bundle.js"></script>
     <script type="text/javascript" src="public/web/js/bootstrap-slider.min.js"></script>
+
+
+
 
     <script type="text/javascript">
         if (typeof Codazon == 'undefined') {
@@ -158,172 +173,106 @@
         var Translator = new Translate([]);
         //]]>
     </script>
-    <link id="avast_os_ext_custom_font" href="chrome-extension://mbckjcfnjmoiinpgddefodcighgikkgn/common/ui/fonts/fonts.css" rel="stylesheet" type="text/css">
+    <link id="avast_os_ext_custom_font" href="public/web/css/fonts.css" rel="stylesheet" type="text/css">
 </head>
 
 <body class=" cms-index-index cms-fastest-fashion-homepage">
 
+    <!-- <button id="nutan" class="nutan btn btn-success">Click me</button>
+    <script>
+        jQuery.noConflict();
+        (function($) {
+            $('#nutan').click(function() {
+                alert('a');
+            });
+        })(jQuery);
+    </script> -->
+
     <div class="wrapper">
-
-        <noscript>
-            <div class="global-site-notice noscript">
-                <div class="notice-inner">
-                    <p>
-                        <strong>JavaScript seems to be disabled in your browser.</strong><br />
-                        You must have JavaScript enabled in your browser to utilize the functionality of this website.
-                    </p>
-                </div>
-            </div>
-        </noscript>
-
         <div class="page">
             <div class="header-container cdz-header-style-09">
                 <div class="header hidden-xs" style="min-height: 239px;">
 
-                    <!-- include header -top  -->
+                    <!-- include header  -->
 
-                    <?php include 'view/include/header-top.php' ?>
-
-                    <?php include 'view/include/header-bottom.php' ?>
+                    <?php include 'view/include/header/header-top.php' ?>
+                    <?php include 'view/include/header/header-bottom.php' ?>
+                    <!-- end include header -->
 
                 </div>
             </div>
 
 
-            <?php include 'view/include/slider-show.php' ?>
+            <?php include 'view/include/content/slider-show.php' ?>
 
             <div class="main-container col1-layout">
                 <div class="main">
                     <div class="container col-main-containter">
                         <div class="row">
                             <!-- Col main -->
-                            <div class="col-main col-sm-24">
-                                <div class="col-wrapper-main">
-
-                                    <div id="map-popup" class="map-popup" style="display:none;">
-                                        <a href="http://magento1.codazon.com/fastest/#" class="map-popup-close" id="map-popup-close">x</a>
-                                        <div class="map-popup-arrow"></div>
-                                        <div class="map-popup-heading">
-                                            <h2 id="map-popup-heading"></h2>
-                                        </div>
-                                        <div class="map-popup-content" id="map-popup-content">
-                                            <div class="map-popup-checkout">
-                                                <form action="http://magento1.codazon.com/fastest/" method="POST" id="product_addtocart_form_from_popup">
-                                                    <input type="hidden" name="product" class="product_id" value="" id="map-popup-product-id">
-                                                    <div class="additional-addtocart-box">
-                                                    </div>
-                                                    <button type="button" title="Add to Cart" class="button btn-cart" id="map-popup-button"><span><span>Add to
-                                                                Cart</span></span></button>
-                                                </form>
-                                            </div>
-                                            <div class="map-popup-msrp" id="map-popup-msrp-box"><strong>Price:</strong>
-                                                <span style="text-decoration:line-through;" id="map-popup-msrp"></span>
-                                            </div>
-                                            <div class="map-popup-price" id="map-popup-price-box"><strong>Actual
-                                                    Price:</strong> <span id="map-popup-price"></span></div>
-                                            <script type="text/javascript">
-                                                //<![CDATA[
-                                                document.observe("dom:loaded", Catalog.Map.bindProductForm);
-                                                //]]>
-                                            </script>
-                                        </div>
-                                        <div class="map-popup-text" id="map-popup-text">Our price is lower than the
-                                            manufacturer's "minimum advertised price." As a result, we cannot show you
-                                            the price in catalog or the product page. <br><br> You have no obligation to
-                                            purchase the product once you know the price. You can simply remove the item
-                                            from your cart.</div>
-                                        <div class="map-popup-text" id="map-popup-text-what-this">Our price is lower
-                                            than the manufacturer's "minimum advertised price." As a result, we cannot
-                                            show you the price in catalog or the product page. <br><br> You have no
-                                            obligation to purchase the product once you know the price. You can simply
-                                            remove the item from your cart.</div>
-                                    </div>
-                                    <div class="std">
-                                        <div style="display: none;">&nbsp;</div>
-                                    </div>
-                                </div>
-                            </div>
+                            <div class="col-main col-sm-24"></div>
                         </div>
                         <div class="row">
-                            <div class="col-sm-6 cdz-area03">
-                                <div class="widget widget-static-block">
-                                    <!-- hot -->
-                                    <?php include('view/include/hot-product.php') ?>
-                                </div>
 
-                                <div class="widget widget-static-block">
-                                    <?php include('view/include/new-product-sider-bar.php'); ?>
-                                </div>
-                                <div class="widget widget-static-block">
-                                    <div class="hidden-xs banner space-base eff-zoombanner">
-                                        <a href="#" class="banner-zoom"><img class="img-responsive" src="public/upload/banner04(1).jpg" alt="Banner 03"></a>
-                                    </div>
-                                </div>
-                                <div class="widget widget-static-block">
-                                    <?php include('view/include/brand.php'); ?>
-                                </div>
-                                <div class="widget widget-static-block"></div>
-                            </div>
+                            <?php include('view/include/sidebar/sidebar-left.php'); ?>
+
                             <div class="col-sm-18 cdz-area02">
 
+
+                                <!-- newproduct -->
                                 <div class="widget widget-static-block">
-                                    <div class="row hidden-xs">
-                                        <div class="col-sm-12">
-                                            <div class="banner space-base eff-zoombanner">
-                                                <a href="http://magento1.codazon.com/fastest/#" class="banner-zoom"><img class="img-responsive" src="public/upload/banner01.jpg" alt="Banner 03"></a>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-12">
-                                            <div class="banner space-base eff-zoombanner">
-                                                <a href="http://magento1.codazon.com/fastest/#" class="banner-zoom"><img class="img-responsive" src="public/upload/banner02(1).jpg" alt="Banner 03"></a>
-                                            </div>
-                                        </div>
+                                    <div class="cdz-products box-style05 space-base cdz-tabs">
+                                        <?php include('view/include/content/new-product.php'); ?>
                                     </div>
                                 </div>
+                                <!-- end newproduct -->
+
+                                <!-- banner -->
+                                <?php include('view/include/content/banner.php') ?>
+                                <!-- end banner -->
 
                                 <!-- sale -->
                                 <div class="widget widget-static-block">
-                                    <div class="cdz-products box-style05 space-base cdz-tabs">
-                                        <?php include('view/include/sale.php'); ?>
-                                    </div>
-                                </div>
-
-                                <div class="widget widget-static-block">
-                                    <div class="hidden-xs banner space-base eff-zoombanner">
-                                        <a href="http://magento1.codazon.com/fastest/#" class="banner-zoom"><img class="img-responsive" src="public/upload/banner03(1).jpg" alt="Banner 03"></a>
-                                    </div>
-                                </div>
-                                <div class="widget widget-static-block">
                                     <div class="cdz-products box-style05 space-base">
 
-                                        <?php include('view/include/new-product.php'); ?>
 
+                                        <?php include('view/include/content/sale.php'); ?>
+
+                                    </div>
+                                </div>
+                                <!-- end sale -->
+
+                                <!-- banner -->
+                                <div class="widget widget-static-block">
+                                    <div class="hidden-xs banner space-base eff-zoombanner">
+                                        <a href="#" class="banner-zoom"><img class="img-responsive" src="public/upload/banner03(1).jpg" alt="Banner 03"></a>
                                     </div>
                                 </div>
                             </div>
+                            <!-- end banner -->
                         </div>
                         <div class="row">
                             <div class="col-sm-24 cdz-area04">
                                 <div class="widget widget-static-block">
                                     <div class="row">
 
-                                        <?php include('view/include/best-seller.php'); ?>
+                                        <?php include('view/include/content/best-seller.php'); ?>
 
-                                        <?php include('view/include/trends.php'); ?>
+                                        <?php include('view/include/content/trends.php'); ?>
 
-                                        <?php include('view/include/popular.php'); ?>
+                                        <?php include('view/include/content/popular.php'); ?>
 
-                                        <?php include('view/include/hot-product-bottom.php'); ?>
+                                        <?php include('view/include/content/hot-product-bottom.php'); ?>
 
 
 
                                         <div class="widget widget-static-block">
 
-                                            <?php include('view/include/new.php'); ?>
+                                            <?php include('view/include/content/new.php'); ?>
 
                                         </div>
 
-                                        <?php include('view/include/contact.php') ?>
+                                        <?php include('view/include/content/contact-right.php') ?>
 
                                     </div>
                                 </div>
@@ -338,12 +287,12 @@
                             <div class="float-bar hidden-xs hidden-sm hidden-md" style="left: 1274.5px;">
                                 <div class="float-bar-content">
                                     <ul class="items">
-                                        <li class="item"><a href="http://magento1.codazon.com/fastest/contact"><span class="fa fa-envelope-o">&nbsp;</span><span>Contact</span></a></li>
-                                        <li class="item"><a href="http://magento1.codazon.com/fastest/about-us"><span class="fa fa-comments-o">&nbsp;</span><span>Live Chat</span></a></li>
-                                        <li class="item"><a href="http://magento1.codazon.com/fastest/about-us"><span class="fa fa-clock-o">&nbsp;</span><span>Store Open time</span></a></li>
-                                        <li class="item"><a href="http://magento1.codazon.com/fastest/about-us"><span class="fa fa-credit-card">&nbsp;</span><span>Accept payments</span></a></li>
-                                        <li class="item"><a href="http://magento1.codazon.com/fastest/about-us"><span class="fa fa-phone-square">&nbsp;</span><span>Call Us</span></a></li>
-                                        <li class="item last"><a href="http://magento1.codazon.com/fastest/about-us"><span class="fa fa-map-marker">&nbsp;</span><span>Our store locations</span></a>
+                                        <li class="item"><a href="https://www.facebook.com/nguyenvanbay.no1"><span class="fa fa-envelope-o">&nbsp;</span><span>Liên hệ</span></a></li>
+                                        <li class="item"><a href="https://www.facebook.com/nguyenvanbay.no1"><span class="fa fa-comments-o">&nbsp;</span><span>Chat vs tôi</span></a></li>
+                                        <li class="item"><a href="https://www.facebook.com/nguyenvanbay.no1"><span class="fa fa-clock-o">&nbsp;</span><span>Thông tin cửa hàng</span></a></li>
+                                        <li class="item"><a href="https://www.facebook.com/nguyenvanbay.no1"><span class="fa fa-credit-card">&nbsp;</span><span>Thanh toán</span></a></li>
+                                        <li class="item"><a href="https://www.facebook.com/nguyenvanbay.no1"><span class="fa fa-phone-square">&nbsp;</span><span>Gọi cho tôi</span></a></li>
+                                        <li class="item last"><a href="https://www.facebook.com/nguyenvanbay.no1"><span class="fa fa-map-marker">&nbsp;</span><span>Địa điểm</span></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -351,75 +300,7 @@
                         </div>
 
                     </div>
-                    <div class="modal fade cdz-popup-wrapper" id="cdz-popup-content" role="dialog">
-                        <div class="modal-popup _show">
-                            <div class="modal-dialog modal-inner-wrap">
-                                <header class="modal-header">
-                                    <button type="button" class="action-close close" data-dismiss="modal"></button>
-                                </header>
 
-                                <div class="modal-content">
-                                    <div class="cdz-popup-content">
-                                        <div class="block-popup-content">
-                                            <div class="widget widget-static-block">
-                                                <div class="cdz-popup-newsletter">
-                                                    <div class="cdz-popup-newsletter-left">
-                                                        <div class="popup-banner">
-                                                            <div class="banner"><a href="http://magento1.codazon.com/fastest/#"><img class="img-responsive" src="public/upload/banner-newsletter.jpg" alt="Banner 01"></a></div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="cdz-popup-newsletter-right">
-                                                        <div class="popup-title">
-                                                            <h3 class="text-uppercase"><span>Sign up Newsletter</span></h3>
-                                                        </div>
-                                                        <div class="popup-content">
-                                                            <div class="popup-content-ads">
-                                                                <p class="popup-content-title h3">Join YourStore's squad for 20%
-                                                                    off</p>
-                                                                <p class="popup-content-desc">and get all the latest news,
-                                                                    trends and offs and offers straight to your inbox. Or get
-                                                                    15% off using code SQUAD15</p>
-                                                                <div class="popup-content-newsletter">
-                                                                    <div class="block block-subscribe">
-                                                                        <div class="block-title">
-                                                                            <strong><span>Newsletter</span></strong>
-                                                                        </div>
-                                                                        <form action="http://magento1.codazon.com/fastest/newsletter/subscriber/new/" method="post" id="newsletter-validate-detail_popup">
-                                                                            <div class="block-content">
-                                                                                <div class="form-subscribe-header">
-                                                                                    <label for="newsletter">Sign Up for Our
-                                                                                        Newsletter:</label>
-                                                                                </div>
-                                                                                <div class="input-box">
-                                                                                    <input type="text" name="email" id="newsletter_popup" title="Sign up for our newsletter" class="input-text required-entry validate-email" placeholder="Sign Up for Our Newsletter">
-                                                                                </div>
-                                                                                <div class="actions">
-                                                                                    <button type="submit" title="Subscribe" class="button"><span><span>Subscribe</span></span></button>
-                                                                                </div>
-                                                                            </div>
-                                                                        </form>
-                                                                        <script type="text/javascript">
-                                                                            //<![CDATA[
-                                                                            var newsletterSubscriberFormDetail_popup =
-                                                                                new VarienForm(
-                                                                                    'newsletter-validate-detail_popup');
-                                                                            //]]>
-                                                                        </script>
-                                                                    </div>
-                                                                </div>
-                                                                <p class="popup-content-small">1 UK only; 2. Offar expiras
-                                                                    23:59(GMT) 10/02/16; 3.</p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                     <script>
                         (function($) {
                             $(document).ready(function(e) {
@@ -436,7 +317,7 @@
                     </script>
 
                     <!-- footer -->
-                    <?php include('view/include/footer.php'); ?>
+                    <?php include('view/include/footer/footer.php'); ?>
                     <!-- end footer -->
 
                     <!-- footer - cart -->
@@ -464,6 +345,7 @@
                 </div>
 
 
+                <!-- footer cart -->
                 <div class="Growler" id="Growler" style="position: fixed; padding: 10px; width: 250px; z-index: 50000; top: 0px; right: 0px;"></div>
                 <div class="footer-cart cdz-dropdown" id="footer-cart" style="position:fixed; bottom:0; left:0; width:100%; z-index:10000; background:#FFF;">
                     <div class="cart-footer-inner" id="cart-footer-inner">
@@ -536,7 +418,25 @@
                     </div>
                 </div>
                 <!-- end footer - cart -->
+                <script>
+                    jQuery.noConflict();
+                    (function($) {
+                        $('.qs-button').click(function() {
+                            let id = $(this).attr('giatri');
 
+                            !$.ajax({
+                                type: "post",
+                                url: "ajax/ajax.php",
+                                data: {type : 'getproductbyid', id : id},
+                                dataType: "json",
+                                success: function (response) {
+                                }
+                            });
+                        });
+                    })(jQuery);
+                </script>
+
+                <!-- show product -->
                 <div class="qs-modal modal" id="cdz-qsiframe" tabindex="-1" role="dialog" style="display: none;">
                     <div class="ajax-load-wrapper" style="display: none;">
                         <div class="ajax-load-button">
@@ -548,17 +448,14 @@
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <button type="button" class="action-close close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-                                    <h4 class="modal-title"><a href="http://magento1.codazon.com/fastest/akg-n24nc-in-ear-noise.html">AKG N24NC In-Ear
+                                    <h4 class="modal-title"><a href="#" id="nameProductTop">AKG N24NC In-Ear
                                             Noise</a></h4>
                                 </div>
                                 <div class="modal-body">
                                     <div class="product-content">
-                                        <script type="text/javascript">
-                                            var optionsPrice = new Product.OptionsPrice([]);
-                                        </script>
                                         <div id="messages_product_view"></div>
                                         <div class="product-view cdz-qs-view row">
-                                            <form action="http://magento1.codazon.com/fastest/checkout/cart/add/uenc/aHR0cDovL21hZ2VudG8xLmNvZGF6b24uY29tL2Zhc3Rlc3QvcXVpY2tzaG9wL2luZGV4L3ZpZXcvaWQvMTE4My8_X19fU0lEPVU,/product/1183/form_key/SlgkdUqN1kdOJo71/" method="post" id="product_addtocart_form">
+                                            <form action="#" method="post" id="addToCart">
                                                 <div class="cdz-qs-image col-sm-14">
                                                     <div class="col-sm-13 product-view-media product-img-box">
                                                         <div class="row">
@@ -578,10 +475,6 @@
                                                                                     </div>
                                                                                     <div style="left: 471px;" class="rsSlide">
                                                                                         <div class="rsContent">
-
-
-
-
                                                                                             <div class="rs-inner"><img class="rsImg rsMainSlideImage" src="http://magento1.codazon.com/fastest/media/catalog/product/cache/34/thumbnail/1000x1231/17f82f742ffe127f42dca9de82fb58b1/t/e/tech_24_3.jpg">
                                                                                                 <div class="magnify" style="background: url(&quot;http://magento1.codazon.com/fastest/media/catalog/product/cache/34/thumbnail/1000x1231/17f82f742ffe127f42dca9de82fb58b1/t/e/tech_24_3.jpg&quot;) 99px 54px no-repeat; width: 225px; height: 225px; display: none; left: -106.078px; top: -85.5px;">
                                                                                                 </div>
@@ -590,10 +483,6 @@
                                                                                     </div>
                                                                                     <div style="left: -471px;" class="rsSlide">
                                                                                         <div class="rsContent">
-
-
-
-
                                                                                             <div class="rs-inner"><img class="rsImg rsMainSlideImage" src="http://magento1.codazon.com/fastest/media/catalog/product/cache/34/thumbnail/1000x1231/17f82f742ffe127f42dca9de82fb58b1/t/e/tech_24_4.jpg">
                                                                                                 <div class="magnify" style="background: url('http://magento1.codazon.com/fastest/media/catalog/product/cache/34/thumbnail/1000x1231/17f82f742ffe127f42dca9de82fb58b1/t/e/tech_24_4.jpg') no-repeat; width:225px; height:225px;">
                                                                                                 </div>
@@ -609,21 +498,6 @@
                                                                                 </div>
                                                                                 <div class="rsArrow rsArrowRight" style="display: block;">
                                                                                     <div class="rsArrowIcn"></div>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="rsNav rsThumbs rsThumbsVer">
-                                                                                <div class="rsThumbsContainer" style="transition-property: -webkit-transform; transform: translate3d(0px, 0px, 0px); height: 306px;">
-                                                                                    <div style="margin-bottom:10px;" class="rsNavItem rsThumb rsNavSelected"><img data-rsmainimg="http://magento1.codazon.com/fastest/media/catalog/product/cache/34/image/1000x1231/17f82f742ffe127f42dca9de82fb58b1/t/e/tech_24_1.jpg" class="rsTmb" src="http://magento1.codazon.com/fastest/media/catalog/product/cache/34/image/95x117/17f82f742ffe127f42dca9de82fb58b1/t/e/tech_24_1.jpg" alt="AKG N24NC In-Ear Noise"><span class="thumbIco"></span></div>
-                                                                                    <div style="margin-bottom:10px;" class="rsNavItem rsThumb"><img data-rsmainimg="http://magento1.codazon.com/fastest/media/catalog/product/cache/34/thumbnail/1000x1231/17f82f742ffe127f42dca9de82fb58b1/t/e/tech_24_3.jpg" class="rsTmb" src="http://magento1.codazon.com/fastest/media/catalog/product/cache/34/thumbnail/95x117/17f82f742ffe127f42dca9de82fb58b1/t/e/tech_24_3.jpg" alt=""><span class="thumbIco"></span>
-                                                                                    </div>
-                                                                                    <div style="margin-bottom:10px;" class="rsNavItem rsThumb"><img data-rsmainimg="http://magento1.codazon.com/fastest/media/catalog/product/cache/34/thumbnail/1000x1231/17f82f742ffe127f42dca9de82fb58b1/t/e/tech_24_4.jpg" class="rsTmb" src="http://magento1.codazon.com/fastest/media/catalog/product/cache/34/thumbnail/95x117/17f82f742ffe127f42dca9de82fb58b1/t/e/tech_24_4.jpg" alt=""><span class="thumbIco"></span>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="rsThumbsArrow rsThumbsArrowLeft rsThumbsArrowDisabled">
-                                                                                    <div class="rsThumbsArrowIcn"></div>
-                                                                                </div>
-                                                                                <div class="rsThumbsArrow rsThumbsArrowRight rsThumbsArrowDisabled">
-                                                                                    <div class="rsThumbsArrowIcn"></div>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -873,6 +747,10 @@
                         </div>
                     </div>
                 </div>
+                <!-- end show product -->
+
+
+
             </div>
         </div>
     </div>

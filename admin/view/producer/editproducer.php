@@ -7,7 +7,8 @@ $row = mysqli_fetch_array($db);
 if (isset($_POST['bt_submit'])) {
     $id = $_POST['id'];
     $name = $_POST['name'];
-	$address = $_POST['address'];
+    $address = $_POST['address'];
+    $sort = $_POST['sort'];
 	
     if (isset($_FILES["image"])) {
 
@@ -41,7 +42,7 @@ if (isset($_POST['bt_submit'])) {
                         unlink('../public/upload/producer/' . $row['image']);
                     }
 
-                    $sql = "UPDATE producer SET name = '$name', address = '$address', image = '$img' WHERE id ='$id' ";
+                    $sql = "UPDATE producer SET name = '$name', address = '$address', image = '$img', sort = '$sort' WHERE id ='$id' ";
 
                     if (mysqli_query($conn, $sql)) {
                         echo ('<script>alert("Cập nhật thành công"); location.href="index.php?page=producer"</script>');
@@ -52,7 +53,7 @@ if (isset($_POST['bt_submit'])) {
             }
         }
     } else {
-		$sql = "UPDATE category SET name = '$name', icon = '$icon' WHERE id ='$id' ";
+		$sql = "UPDATE producer SET name = '$name', address = '$address', sort = '$sort' WHERE id ='$id' ";
         if (mysqli_query($conn, $sql)) {
             echo ('<script>alert("Cập nhật thành công"); location.href="index.php?page=producer"</script>');
         }
@@ -75,9 +76,12 @@ if (isset($_POST['bt_submit'])) {
             <td style="font-weight: bold;">Địa chỉ</td>
             <td><input type="text" class="form-control" name="address" value="<?php echo ($row["address"]) ?>"></td>
         </tr>
+
+        <tr>
+            <td style="font-weight: bold;">Vị trí trên menu</td>
+            <td><input type="text" class="form-control" name="sort" value="<?php echo ($row["sort"]) ?>"></td>
+        </tr>
     <table>
-
-
         <tr>
             Cập nhật hình ảnh <input style="width: 30px;" type="checkbox" name="isSelected" id="status">
             <br><br>

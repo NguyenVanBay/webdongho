@@ -11,14 +11,17 @@ if (isset($_POST['login'])) {
     } else {
         $sql = "SELECT* FROM admin WHERE name = '$user' AND password = '$pass'";
         $kt = mysqli_query($conn, $sql);
-        $row = mysqli_num_rows($kt);
-        if ($row == 0) {
+        $row = mysqli_fetch_object($kt);
+
+        
+        if ($row== NULL) {
             echo ("<script language = javascript>alert('Tên đăng nhập hoặc mật khẩu không đúng')</script>");
         } else {
             session_start();
             $_SESSION['admin'] = $user;
+            $_SESSION['admin_id'] = $row->id;
+            // echo $_SESSION['admin_id'];
             header("location:Index.php?page=trangchu");
-            die();
         }
     }
 }

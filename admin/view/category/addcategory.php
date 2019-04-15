@@ -3,6 +3,7 @@
 if (isset($_POST['bt_submit'])) {
     $name = $_POST['name'];
     $icon = $_POST['icon'];
+    $sort = $_POST['sort'];
 
     if ($_FILES["image"]["name"] != null) {
 
@@ -26,7 +27,7 @@ if (isset($_POST['bt_submit'])) {
                 // Upload file
                 move_uploaded_file($tmp_name, $path . $image);
 
-                $sql = "INSERT INTO category(name,icon, image) VALUES ('$name','$icon','$image')";
+                $sql = "INSERT INTO category(name,icon, image, sort) VALUES ('$name','$icon','$image', '$sort')";
                 if (mysqli_query($conn, $sql)) {
                     echo ("<script language='javascript'>alert('Thêm thành công');location.href='index.php?page=category'</script>");
                 }
@@ -50,6 +51,11 @@ if (isset($_POST['bt_submit'])) {
         <tr>
             <td style="font-weight: bold;">Icon</td>
             <td><input type="text" name="icon" class="form-control"></td>
+        </tr>
+
+        <tr>
+            <td style="font-weight: bold;">Vị trí menu</td>
+            <td><input type="text" name="sort" class="form-control"></td>
         </tr>
         <tr>
             <td style="font-weight: bold;">Hình ảnh</td>

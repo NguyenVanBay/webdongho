@@ -3,6 +3,7 @@
 if (isset($_POST['bt_submit'])) {
     $name = $_POST['name'];
     $address = $_POST['address'];
+    $sort = $_POST['sort'];
 
     if ($_FILES["image"]["name"] != null) {
 
@@ -26,7 +27,7 @@ if (isset($_POST['bt_submit'])) {
                 // Upload file
                 move_uploaded_file($tmp_name, $path . $image);
 
-                $sql = "INSERT INTO producer(name,address, image) VALUES ('$name','$address','$image')";
+                $sql = "INSERT INTO producer(name,address, image, sort) VALUES ('$name','$address','$image', ,'$sort')";
                 if (mysqli_query($conn, $sql)) {
                     echo ("<script language='javascript'>alert('Thêm thành công');location.href='index.php?page=producer'</script>");
                 }
@@ -50,6 +51,10 @@ if (isset($_POST['bt_submit'])) {
         <tr>
             <td style="font-weight: bold;">Địa chỉ</td>
             <td><input type="text" name="address" class="form-control"></td>
+        </tr>
+        <tr>
+            <td style="font-weight: bold;">Vị trí hiển thị</td>
+            <td><input type="text" name="sort" class="form-control"></td>
         </tr>
         <tr>
             <td style="font-weight: bold;">Hình ảnh</td>

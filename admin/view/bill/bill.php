@@ -1,8 +1,8 @@
 <?php
 
 $sql = "SELECT bill.*, district.name as huyen , province.name as tinh FROM bill "
-. " INNER JOIN district on district.districtid =  bill.district_id "
-. " INNER JOIN province on district.provinceid =  province.provinceid ";
+	. " INNER JOIN district on district.districtid =  bill.district_id "
+	. " INNER JOIN province on district.provinceid =  province.provinceid ";
 $query = mysqli_query($conn, $sql);
 
 
@@ -28,6 +28,7 @@ $query = mysqli_query($conn, $sql);
 					<th class="sorting_asc" tabindex="0" aria-controls="bootstrap-data-table-export" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 209px;">Tỉnh</th>
 					<th class="sorting_asc" tabindex="0" aria-controls="bootstrap-data-table-export" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 209px;">Huyện</th>
 					<th class="sorting_asc" tabindex="0" aria-controls="bootstrap-data-table-export" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 209px;">Số điện thoại</th>
+					<th class="sorting_asc" tabindex="0" aria-controls="bootstrap-data-table-export" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 209px;">Ghi chú</th>
 					<th class="sorting_asc" tabindex="0" aria-controls="bootstrap-data-table-export" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 209px;">Trạng thái</th>
 					<th class="sorting_asc" tabindex="0" aria-controls="bootstrap-data-table-export" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 209px;">Ngày tạo</th>
 					<th style="width: 50px; !important"></th>
@@ -43,23 +44,33 @@ $query = mysqli_query($conn, $sql);
 						<td><?php echo ($row["name"]) ?></td>
 						<td><?php echo ($row["tinh"]) ?></td>
 						<td><?php echo ($row["huyen"]) ?></td>
-						<td><?php echo ($row["phone"]) ?></td>	
+						<td><?php echo ($row["phone"]) ?></td>			
+						<td><?php echo ($row["note"]) ?></td>
 						<td><?php echo ($row["status"]) ?></td>
 						<td><?php echo ($row["created_at"]) ?></td>
 						<td style="text-align: center">
-						<a href="index.php?page=detailproduct&id=<?php echo $row["id"] ?>"><i class="fa fa-info"></i></a>
-							
-						<?php
-						if($row["status"] == "Đã thanh toán") {
-							?>
-							<a href="index.php?page=updatestatus&id=<?php echo $row["id"] ?>"><i class="fa fa-check"></i></a>
+							<a href="index.php?page=billdetail&id=<?php echo $row["id"] ?>"><i style="color: green;"  class="fa fa-info"></i></a>
+
 							<?php
-						} else {
+							if ($row["status"] == "Đã giao hàng") {
+								?>
+								<a href="index.php?page=updatestatus&id=<?php echo $row["id"] ?>&tt1=Đã giao hàng&tt2=Hủy đơn hàng"><i style="color: red;" class="fa fa-trash"></i></a>
+							<?php
+						} else if ($row["status"] == "Đang chờ duyệt") {
 							?>
-							<a href="index.php?page=updatestatus&id=<?php echo $row["id"] ?>"><i class="fa fa-trash"></i></a>
+
+								<a href="index.php?page=updatestatus&id=<?php echo $row["id"] ?>&tt1=Đang chờ duyệt&tt2=Đang giáo hàng"><i style="color: blue;" class="fa fa-fighter-jet"></i></a>
+							<?php
+						} else if ($row["status"] == "Đang giao hàng")  {
+							?>
+								<a href="index.php?page=updatestatus&id=<?php echo $row["id"] ?>&tt1=Đang giao hàngt&tt2=Đã giao hàng"><i style="color: yellow;" class="fa fa-check"></i></a>
+							<?php
+						}else if ($row["status"] == "Hủy đơn hàng")  {
+							?>
+								<!-- <a href="index.php?page=updatestatus&id=<?php echo $row["id"] ?>&tt1=Đang chờ duyệt&tt2=Đang giáo hàng"><i class="fa fa-trash"></i></a> -->
 							<?php
 						} ?>
-							
+
 					</tr>
 				<?php
 			}
@@ -72,6 +83,7 @@ $query = mysqli_query($conn, $sql);
 					<th class="sorting_asc" tabindex="0" aria-controls="bootstrap-data-table-export" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 209px;">Tỉnh</th>
 					<th class="sorting_asc" tabindex="0" aria-controls="bootstrap-data-table-export" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 209px;">Huyện</th>
 					<th class="sorting_asc" tabindex="0" aria-controls="bootstrap-data-table-export" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 209px;">Số điện thoại</th>
+					<th class="sorting_asc" tabindex="0" aria-controls="bootstrap-data-table-export" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 209px;">Ghi chú</th>
 					<th class="sorting_asc" tabindex="0" aria-controls="bootstrap-data-table-export" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 209px;">Trạng thái</th>
 					<th class="sorting_asc" tabindex="0" aria-controls="bootstrap-data-table-export" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 209px;">Ngày tạo</th>
 					<th style="width: 50px;"></th>
