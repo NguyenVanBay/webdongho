@@ -1,5 +1,5 @@
 <?php
-	include("../connection.php");
+	include("../connection/connection.php");
 	$id = $_GET['id'];
 
 	$sql = "SELECT image, thumbnail FROM product WHERE id = $id";

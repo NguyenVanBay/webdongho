@@ -1,0 +1,40 @@
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+tr.product.product-has-image.clearfix {
+    height: 70px;
+}
+
+span.product-thumbnail__quantity {
+    position: absolute;
+    top: -8px;
+    left: 37px;
+    background: red;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    color: #fff;
+}
+
+.product-thumbnail {
+    position: relative;
+}
+
+img.product-thumbnail__image {
+    width: 50px;
+    height: auto;
+}
+
+.sidebar {
+    border: 1px solid #999;
+    background: #fff;
+    margin: 20px;
+    padding: 30px;
+}
+
+table.product-table {
+    width: 100%;
+}

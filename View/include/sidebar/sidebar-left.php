@@ -1,11 +1,11 @@
 <div class="col-sm-6 cdz-area03">
     <div class="widget widget-static-block">
         <!-- hot -->
-        <?php include('hot-product.php') ?>
+        <?php include('s_hot-product.php') ?>
     </div>
 
     <div class="widget widget-static-block">
-        <?php include('new-product-sider-bar.php'); ?>
+        <?php include('s_new-product-sider-bar.php'); ?>
     </div>
     <div class="widget widget-static-block">
         <div class="hidden-xs banner space-base eff-zoombanner">
@@ -13,7 +13,7 @@
         </div>
     </div>
     <div class="widget widget-static-block">
-        <?php include('brand.php'); ?>
+        <?php include('s_brand.php'); ?>
     </div>
     <div class="widget widget-static-block"></div>
 </div>

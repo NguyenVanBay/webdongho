@@ -74,14 +74,14 @@ if(typeof Codazon == 'undefined'){
 		}
 		$effImg.attr('src',src);
 		$effImg.css(step01Css);
-		$effImg.fadeIn(200);
+		// $effImg.fadeIn(200);
 		
 		var $fCart = $(conf.fCart);
 		var $dest = $(conf.dest);
 		var flyImage = function(){
 			var newWidth = 0.1*width, newHeight = 0.1*height;
 			var step02Css = {
-				top: $dest.offset().top,
+				top: 2000,
 				left: $dest.offset().left,
 				width: newWidth,
 				height: newHeight
@@ -133,14 +133,14 @@ if(typeof Codazon == 'undefined'){
 				$('#ajaxcart-img').attr('src',swatchImageUrl);
 			}
 		});
-		$fCart.find('.cart-trigger').click(function(){
-			var $this = $(this);
-			$fCart.toggleClass('active');
-			var $cartContent = $fCart.find('.cart-content');
-			$cartContent.css({minHeight:0}).slideToggle(300,function(){
-				$cartContent.css({minHeight:''});
-			});
-		});
+		// $fCart.find('.cart-trigger').click(function(){
+		// 	var $this = $(this);
+		// 	$fCart.toggleClass('active');
+		// 	var $cartContent = $fCart.find('.cart-content');
+		// 	$cartContent.css({minHeight:0}).slideToggle(300,function(){
+		// 		$cartContent.css({minHeight:''});
+		// 	});
+		// });
 		$('html,body').click(function(e){
 			if($(e.target).parents('.cart-item.active').length == 0){
 				var $cartItem = $fCart.find('.cart-item.active');

@@ -21,7 +21,6 @@ if (isset($_POST['btn_submit'])) {
 
         foreach ($listProduct as $key => $value) {
             $idproduct = explode('-', key((array)$value))[0];
-            // echo $amount = $value->$idproduct;
             $amount = current((array)$value);
             $inventory = $amount;
             $inventory_actual = $amount;
@@ -41,7 +40,6 @@ if (isset($_POST['btn_submit'])) {
                     $sql = "UPDATE warehouse SET inventory = '$inventory', inventory_actual = '$inventory_actual' where product_id = '$idproduct'";
 
                     if (mysqli_query($conn, $sql)) {
-                        // echo ('<script>alert("Cập nhật thành công"); location.href="index.php?page=warehouse"</script>');
                     }
 
                     $check = 0;
@@ -53,13 +51,11 @@ if (isset($_POST['btn_submit'])) {
                 $sql = "INSERT INTO warehouse(product_id, inventory, inventory_actual) VALUES('$idproduct', '$inventory', '$inventory_actual')";
 
                 if (mysqli_query($conn, $sql)) {
-                    // echo ('<script>alert("Cập nhật thành công"); location.href="index.php?page=warehouse"</script>');
                 }
             }
 
             $sql = "INSERT INTO warehousing_detail(product_id, warehousing_id, amount) VALUES ('$idproduct', '$last_id', '$amount')";
             if (mysqli_query($conn, $sql)) {
-                // echo ('<script>alert("Nhập kho thành công"); location.href="index.php?page=warehouse"</script>');
             }
         }
     }

@@ -1,5 +1,5 @@
 <?php
-	include("../connection.php");
+	include("../connection/connection.php");
 	$dhct = $_GET['dhct'];
 	$dh = $_GET['dh'];
 	$sql = "DELETE FROM tbl_bill_detail WHERE Id = '".$dhct."'";

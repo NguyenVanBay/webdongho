@@ -45,23 +45,54 @@
                             </div>
                         </div>
                     </div>
+
+                    <?php
+
+                    $listProduct = [];
+
+                    if (isset($_SESSION['listProduct'])) {
+                        $listProduct = $_SESSION['listProduct'];
+                    }
+
+                    $_SESSION['listProduct'] = $listProduct;
+
+                    ?>
+                    <?php
+
+                    $tongtien = 0;
+                    $tongsanpham = 0;
+
+                    foreach ($listProduct as $key => $value) {
+                        $masanpham = $value['masanpham'];
+                        $soluong = $value['soluong'];
+                        $query = "select * from product where id = '$masanpham'";
+                        $db = mysqli_query($conn, $query);
+                        $row = mysqli_fetch_array($db);
+
+                        $tongtien += $soluong * ((int)($row['price'] - (int)$row['price'] * ((int)$row['sale'] / 100)));
+                        $tongsanpham += $soluong;
+                    }
+
+                    ?>
+
+
                     <div class="col-sm-8 cart-wrapper">
                         <div class="cdz-header-cart">
                             <div class="cdz-top-cart cdz-dropdown">
                                 <a class="cdz-trigger cart-icon dd-trigger" href="javascript:void(0)">
                                     <span class="cart-fa"><i class="fa fa-shopping-cart" aria-hidden="true"></i></span>
                                     <span class="cart-label">Giỏ hàng</span>
-                                    <span class="cart-qty">0</span>
-                                    <span class="cart-subtotal"><span class="price">0.00 VND</span></span>
+                                    <span id="soluongsanpham_header" class="cart-qty"><?= $tongsanpham ?></span>
+                                    <span class="cart-subtotal"><span class="price" id="tongtien_header"><?= $tongtien ?> VND</span></span>
                                 </a>
-                                <div class="block block-cart cdz-dropdown-content dd-content" style="display:none;">
+                                <!-- <div class="block block-cart cdz-dropdown-content dd-content" style="display:none;">
                                     <div class="block-title">
                                         <strong><span>Giỏ hàng của tôi</span></strong>
                                     </div>
                                     <div class="block-content">
                                         <p class="empty">Bạn không có sản phẩm nào trong giỏ hàng</p>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>

@@ -59,7 +59,7 @@ $query = mysqli_query($conn, $sql);
 						} else if ($row["status"] == "Đang chờ duyệt") {
 							?>
 
-								<a href="index.php?page=updatestatus&id=<?php echo $row["id"] ?>&tt1=Đang chờ duyệt&tt2=Đang giáo hàng"><i style="color: blue;" class="fa fa-fighter-jet"></i></a>
+								<a href="index.php?page=updatestatus&id=<?php echo $row["id"] ?>&tt1=Đang chờ duyệt&tt2=Đang giao hàng"><i style="color: blue;" class="fa fa-fighter-jet"></i></a>
 							<?php
 						} else if ($row["status"] == "Đang giao hàng")  {
 							?>

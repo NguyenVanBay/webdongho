@@ -21,36 +21,30 @@ if (isset($_POST['bt_submit'])) {
         echo ('<script language = javascript>alert("Thành công");location.href="index.php?page=admin"</script>');
 }
 ?>
-<br><br>
-<form method="POST">
 
-    <div class="form-group">
-        <label for="my-input">Tên</label>
-        <input id="my-input" class="form-control" name="name" value="<?php echo ($row["name"]) ?>" type="text">
-    </div>
+<form method="POST" enctype="multipart/form-data">
+    <table class="table table-striped table-bordered">
+        <tr>
+            <td style="font-weight: bold;">Tên</td>
+            <td><input type="text" name="name"  value="<?php echo ($row["name"]) ?>" class="form-control"></td>
+        </tr>
+        <tr>
+            <td style="font-weight: bold;">Email</td>
+            <td><input type="text" name="email" value="<?php echo ($row["email"]) ?>"  class="form-control"></td>
+        </tr>
 
-    <div class="form-group">
-        <label for="my-input">Email</label>
-        <input id="my-input" class="form-control" name="email" value="<?php echo ($row["email"]) ?>" type="text">
-    </div>
-
-    <div class="form-group">
-        <label for="my-input">Password</label>
-        <input id="my-input" class="form-control" name="password" value="<?php echo ($row["password"]) ?>" type="password">
-    </div>
-
-    <div class="form-group">
-        <label for="my-input">Địa chỉ</label>
-        <input id="my-input" class="form-control" name="address" value="<?php echo ($row["address"]) ?>" type="text">
-    </div>
-
-    <div class="form-group">
-        <label for="my-input">SĐT</label>
-        <input id="my-input" class="form-control" name="phone" value="<?php echo ($row["phone"]) ?>" type="text">
-    </div>
-
-    <div class="form-group">
-        <input type="submit" name="bt_submit" value="Thêm" class="btn btn-success">
-    </div>
-
+        <tr>
+            <td style="font-weight: bold;">Password</td>
+            <td><input type="password" name="password" value="<?php echo ($row["password"]) ?>" class="form-control"></td>
+        </tr>
+        <tr>
+            <td style="font-weight: bold;">Địa chỉ</td>
+            <td><input type="text" name="address" value="<?php echo ($row["address"]) ?>"  class="form-control"></td>
+        </tr>
+        <tr>
+            <td style="font-weight: bold;">Số điện thoại</td>
+            <td><input type="text" name="phone" value="<?php echo ($row["phone"]) ?>" class="form-control"></td>
+        </tr>
+    </table>
+    <input type="submit" name="bt_submit" value="Thêm" class="btn btn-success btn-sm">
 </form>

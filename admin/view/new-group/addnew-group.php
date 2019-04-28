@@ -8,14 +8,14 @@ if (isset($_POST['bt_submit'])) {
     }
 }
 ?>
+
 <form method="POST" enctype="multipart/form-data">
-    <div class="form-group">
-        <label for="my-input">Tên thể loại</label>
-        <input id="my-input" class="form-control" name="name" value="" type="text">
-    </div>
-
-    <div class="form-group">
-        <input type="submit" name="bt_submit" value="Thêm" class="btn btn-success">
-    </div>
-
+    <table class="table table-striped table-bordered">
+        <tr>
+            <td style="font-weight: bold;">Tên thể loại</td>
+            <td><input type="text" name="name" class="form-control"></td>
+        </tr>
+    </table>
+    
+    <input type="submit" name="bt_submit" value="Thêm" class="btn btn-success">
 </form>

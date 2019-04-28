@@ -2,7 +2,7 @@
 
 $id = $_GET['id'];
 
-$sql = "SELECT warehousing_detail.*, product.name FROM warehousing_detail INNER JOIN product on warehousing_detail.product_id = product.id where warehousing_detail.id = '$id'";
+$sql = "SELECT warehousing_detail.*, product.id, product.name FROM warehousing_detail INNER JOIN product on warehousing_detail.product_id = product.id where warehousing_detail.warehousing_id = '$id'";
 $query = mysqli_query($conn, $sql);
 ?>
 

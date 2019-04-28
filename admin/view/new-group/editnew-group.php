@@ -14,18 +14,13 @@ if (isset($_POST['bt_submit'])) {
 }
 ?>
 <br><br>
-<form method="POST">
+<form method="POST" enctype="multipart/form-data">
+	<table class="table table-striped table-bordered">
+		<tr>
+			<td style="font-weight: bold;">Tên thể loại</td>
+			<td><input type="text" name="name" value="<?php echo ($row["name"]) ?>" class="form-control"></td>
+		</tr>
+	</table>
 
-	<div class="form-group">
-		<label for="my-input">Tên thể loại</label>
-		<input id="my-input" class="form-control" name="name" value="<?php echo ($row["name"]) ?>" type="text">
-	</div>
-
-	<input type="hidden" name="id" value="<?php echo ($row["id"]) ?>" readonly>
-
-	<div class="form-group">
-		<input type="submit" name="bt_submit" value="Cập nhật" class="btn btn-success">
-	</div>
-
-
+	<input type="submit" name="bt_submit" value="Thêm" class="btn btn-success">
 </form>

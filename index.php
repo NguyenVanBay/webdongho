@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-include("connection.php");
+include("connection/connection.php");
 include("view/config/config.php");
 
 ?>
@@ -41,6 +41,7 @@ include("view/config/config.php");
     <link rel="stylesheet" type="text/css" href="public/web/css/bootstrap-slider.min.css" media="all">
     <link rel="stylesheet" type="text/css" href="public/web/css/print.css" media="print">
     <link rel="stylesheet" type="text/css" href="public/web/css/custom.css">
+    <link rel="stylesheet" type="text/css" href="public/web/css/mystyle.css">
 
 
     <script type="text/javascript" src="public/jQuery-3.3.1/jquery-3.3.1.min.js"></script>
@@ -83,7 +84,6 @@ include("view/config/config.php");
     <script type="text/javascript" src="public/web/js/jquery.royalslider.min.js"></script>
     <script type="text/javascript" src="public/web/js/quickshop.js"></script>
     <script type="text/javascript" src="public/web/js/msrp.js"></script>
-    <script type="text/javascript" src="public/web/js/growler.js"></script>
     <script type="text/javascript" src="public/web/js/modalbox.js"></script>
     <script type="text/javascript" src="public/web/js/ajaxcart.js"></script>
     <script type="text/javascript" src="public/web/js/ajaxcart_effect.js"></script>
@@ -178,16 +178,6 @@ include("view/config/config.php");
 
 <body class=" cms-index-index cms-fastest-fashion-homepage">
 
-    <!-- <button id="nutan" class="nutan btn btn-success">Click me</button>
-    <script>
-        jQuery.noConflict();
-        (function($) {
-            $('#nutan').click(function() {
-                alert('a');
-            });
-        })(jQuery);
-    </script> -->
-
     <div class="wrapper">
         <div class="page">
             <div class="header-container cdz-header-style-09">
@@ -203,118 +193,42 @@ include("view/config/config.php");
             </div>
 
 
-            <?php include 'view/include/content/slider-show.php' ?>
+            <?php
+            if (!isset($_GET['page']) || $_GET['page'] == '') {
+                include 'view/include/content/slider-show.php';
+            }
+            ?>
 
             <div class="main-container col1-layout">
                 <div class="main">
                     <div class="container col-main-containter">
-                        <div class="row">
-                            <!-- Col main -->
-                            <div class="col-main col-sm-24"></div>
-                        </div>
-                        <div class="row">
 
-                            <?php include('view/include/sidebar/sidebar-left.php'); ?>
+                        <!-- phàn thân -->
+                        <?php
 
-                            <div class="col-sm-18 cdz-area02">
+                        if (isset($_GET['page'])) {
 
+                            $page = $_GET['page'];
+                            switch ($page) {
+                                case 'cart':
+                                    require 'view/cart/cart.php';
+                                    break;
+                                case 'checkout':
+                                    require 'view/cart/checkout.php';
+                                    break;
+                                default:
+                                    require 'view/cart/index.php';
+                                    break;
+                            }
+                        } else {
+                            require 'view/index.php';
+                        }
 
-                                <!-- newproduct -->
-                                <div class="widget widget-static-block">
-                                    <div class="cdz-products box-style05 space-base cdz-tabs">
-                                        <?php include('view/include/content/new-product.php'); ?>
-                                    </div>
-                                </div>
-                                <!-- end newproduct -->
+                        ?>
 
-                                <!-- banner -->
-                                <?php include('view/include/content/banner.php') ?>
-                                <!-- end banner -->
-
-                                <!-- sale -->
-                                <div class="widget widget-static-block">
-                                    <div class="cdz-products box-style05 space-base">
-
-
-                                        <?php include('view/include/content/sale.php'); ?>
-
-                                    </div>
-                                </div>
-                                <!-- end sale -->
-
-                                <!-- banner -->
-                                <div class="widget widget-static-block">
-                                    <div class="hidden-xs banner space-base eff-zoombanner">
-                                        <a href="#" class="banner-zoom"><img class="img-responsive" src="public/upload/banner03(1).jpg" alt="Banner 03"></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- end banner -->
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-24 cdz-area04">
-                                <div class="widget widget-static-block">
-                                    <div class="row">
-
-                                        <?php include('view/include/content/best-seller.php'); ?>
-
-                                        <?php include('view/include/content/trends.php'); ?>
-
-                                        <?php include('view/include/content/popular.php'); ?>
-
-                                        <?php include('view/include/content/hot-product-bottom.php'); ?>
-
-
-
-                                        <div class="widget widget-static-block">
-
-                                            <?php include('view/include/content/new.php'); ?>
-
-                                        </div>
-
-                                        <?php include('view/include/content/contact-right.php') ?>
-
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-24 main-content-bottom"></div>
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="widget widget-static-block">
-                            <div class="float-bar hidden-xs hidden-sm hidden-md" style="left: 1274.5px;">
-                                <div class="float-bar-content">
-                                    <ul class="items">
-                                        <li class="item"><a href="https://www.facebook.com/nguyenvanbay.no1"><span class="fa fa-envelope-o">&nbsp;</span><span>Liên hệ</span></a></li>
-                                        <li class="item"><a href="https://www.facebook.com/nguyenvanbay.no1"><span class="fa fa-comments-o">&nbsp;</span><span>Chat vs tôi</span></a></li>
-                                        <li class="item"><a href="https://www.facebook.com/nguyenvanbay.no1"><span class="fa fa-clock-o">&nbsp;</span><span>Thông tin cửa hàng</span></a></li>
-                                        <li class="item"><a href="https://www.facebook.com/nguyenvanbay.no1"><span class="fa fa-credit-card">&nbsp;</span><span>Thanh toán</span></a></li>
-                                        <li class="item"><a href="https://www.facebook.com/nguyenvanbay.no1"><span class="fa fa-phone-square">&nbsp;</span><span>Gọi cho tôi</span></a></li>
-                                        <li class="item last"><a href="https://www.facebook.com/nguyenvanbay.no1"><span class="fa fa-map-marker">&nbsp;</span><span>Địa điểm</span></a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+                        <!-- phần thân -->
 
                     </div>
-
-                    <script>
-                        (function($) {
-                            $(document).ready(function(e) {
-                                var now = new Date();
-                                var time = now.getTime();
-                                var expireTime = time + 3600000;
-                                now.setTime(expireTime);
-                                if (!Mage.Cookies.get("cdz_popup")) {
-                                    document.cookie = 'cdz_popup=true; expires=' + now.toGMTString();
-                                    $('#cdz-popup-content').modal('show');
-                                }
-                            });
-                        })(jQuery);
-                    </script>
 
                     <!-- footer -->
                     <?php include('view/include/footer/footer.php'); ?>
@@ -323,116 +237,164 @@ include("view/config/config.php");
                     <!-- footer - cart -->
                     <div id="back-top" style=""><a title="Top" href="#top">Top</a></div>
 
-                    <script>
-                        var cartItemDeteleConfirmMessage =
-                            'Are you sure you would like to remove this item from the shopping cart?';
-                        (function($) {
-                            var $fCart = $('#footer-cart');
-                            $fCart.find('.cart-trigger').click(function() {
-                                var $this = $(this);
-                                $fCart.toggleClass('active');
-                                $fCart.find('.cart-content').slideToggle(300);
-                            });
-                            if (!$fCart.hasClass('active')) {
-                                $fCart.find('.cart-content').hide();
-                            }
-                            if (!$fCart.hasClass('active')) {
-                                $fCart.find('.cart-content').hide();
-                            }
-                            toggleCartEditor();
-                        })(jQuery);
-                    </script>
+
                 </div>
 
 
                 <!-- footer cart -->
-                <div class="Growler" id="Growler" style="position: fixed; padding: 10px; width: 250px; z-index: 50000; top: 0px; right: 0px;"></div>
-                <div class="footer-cart cdz-dropdown" id="footer-cart" style="position:fixed; bottom:0; left:0; width:100%; z-index:10000; background:#FFF;">
-                    <div class="cart-footer-inner" id="cart-footer-inner">
-                        <a href="javascript:void(0)" class="cart-trigger">
-                            <span class="loading" style="display:none;">Processing...</span>
-                            <span class="amount loaded">0 item(s) in your cart</span>
-                        </a>
-                        <div class="cart-content" style="display: none;">
-
-                            <div class="cart-content">
-                                <div class="cart-icon"></div>
-                                <div class="cart-items">
-                                    <ul class="cart-products-list">
-                                        <li class="cart-item">
-                                            <div class="product">
-                                                <strong>2</strong>
-                                                <span class="product-image"><img class="img-responsive" src="public/upload/mtk004t.jpg" alt="Hitachi 50 Inch Smart 4K"></span>
-                                            </div>
-                                            <div class="product-details">
-
-                                                <div class="product-hover-container">
-                                                    <div class="product-hover-inner">
-
-                                                        <form class="ajax-update-cart" id="updatecart_form_6166" action="http://magento1.codazon.com/fastest/checkout/cart/updateItemOptions/id/6166/?___SID=U" method="post">
-                                                            <input class="item-qty cart-item-qty" name="qty" value="2">
-                                                            <button type="submit" title="OK" class="btn-edit">OK</button>
-                                                            <a href="#" title="Remove This Item" class="btn-remove">Remove Item</a>
-                                                        </form>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="cart-item">
-                                            <div class="product">
-                                                <strong>1</strong>
-                                                <span class="product-image"><img class="img-responsive" src="public/upload/mtk004t.jpg" alt="Canon Powershot SX43"></span>
-                                            </div>
-                                            <div class="product-details">
-
-                                                <div class="product-hover-container">
-                                                    <div class="product-hover-inner">
-
-                                                        <form class="ajax-update-cart" id="updatecart_form_6167" action="http://magento1.codazon.com/fastest/checkout/cart/updateItemOptions/id/6167/?___SID=U" method="post">
-                                                            <input class="item-qty cart-item-qty" name="qty" value="1">
-                                                            <button type="submit" title="OK" class="btn-edit">OK</button>
-                                                            <a href="#" title="Remove This Item" class="btn-remove">Remove Item</a>
-                                                        </form>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="check-out">
-                                    <div class="summary">
-                                        <div class="cart-total-title">
-                                            <h4> Total item</h4>
-                                            <p class="amount"><a href="http://magento1.codazon.com/fastest/checkout/cart/?___SID=U">3</a> </p>
-                                        </div>
-                                        <div class="subtotal">
-                                            <div class="sub-total-label">Cart Subtotal</div> <span class="price">$256.98</span>
-                                        </div>
-                                    </div>
-                                    <div class="actions">
-                                        <button type="button" title="Checkout" class="button" onclick="setLocation('http://magento1.codazon.com/fastest/checkout/onepage/?___SID=U')"><span><span>Checkout</span></span></button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <?php
+                include('view/include/footer/footer_cart.php')
+                ?>
                 <!-- end footer - cart -->
                 <script>
+                    // jquery code.
                     jQuery.noConflict();
                     (function($) {
+
+
+                        // ajax show product.
                         $('.qs-button').click(function() {
                             let id = $(this).attr('giatri');
 
-                            !$.ajax({
+                            $.ajax({
                                 type: "post",
                                 url: "ajax/ajax.php",
-                                data: {type : 'getproductbyid', id : id},
+                                data: {
+                                    type: 'getproductbyid',
+                                    id: id
+                                },
                                 dataType: "json",
-                                success: function (response) {
+                                success: function(response) {
+                                    console.log('a');
+                                    $("#nameProductTop").html(response['name']);
+                                    $("#imageProduct").attr('src', 'public/upload/product/' + response['thumbnail']);
+                                    if (parseInt(response['sale']) != 0) {
+                                        $("#oldPriceProduct").html(response['price'] + ' đ');
+                                        let giamoi = parseInt(response['price']) - (parseInt(response['price']) * parseInt(response['sale']) / 100);
+                                        // alert(giamoi);
+                                        $("#newPriceProduct").html(giamoi + ' đ');
+                                    } else {
+                                        $("#oldPriceProduct").html(response['price'] + ' đ');
+
+                                    }
+                                    $("#descriptionProduct").html(response['description']);
                                 }
                             });
                         });
+                        // end show product
+
+
+                        // add to cart click.
+                        $('.btn-cart').click(function() {
+
+                            let id = $(this).attr('msp');
+
+                            $.ajax({
+                                type: "post",
+                                url: "ajax/ajax.php",
+                                data: {
+                                    type: 'addToCart',
+                                    id: id,
+                                    soluong: 1
+                                },
+                                dataType: "text",
+                                success: function(response) {
+                                    // alert("Thêm vào giỏ hàng thành công");
+
+                                    $('#cart-footer-product').html("");
+                                    $('#cart-footer-product').html(response);
+                                    $('#soluongsanpham_footer').html(response['tongsanpham']);
+                                    $('#soluongsanpham_header').html(response['tongsanpham']);
+      s                          }
+                            });
+
+                        });
+
+                        // end add to cart
+
+
+                        // edit product
+
+                        $('.updateProductCart').submit(function(e) {
+                            e.preventDefault();
+
+                            var form = $(this);
+
+                            // update cart
+                            $.ajax({
+                                type: "post",
+                                url: "ajax/ajax.php",
+                                data: form.serialize(),
+                                dataType: "json",
+                                success: function(response) {
+                                    console.log('edit thanh cong');
+
+                                    let soluong = response['soluong'];
+                                    let masanpham = response['masanpham'];
+                                    // update html.
+                                    $.ajax({
+                                        type: "post",
+                                        url: "ajax/ajax.php",
+                                        data: {
+                                            type: 'getinfo',
+                                            id: masanpham
+                                        },
+                                        dataType: "json",
+                                        success: function(response) {
+                                            console.log('get thanh cong');
+                                            console.log(response);
+                                            $('#soluongsanpham_footer').html(response['tongsanpham']);
+                                            $('#soluongsanpham_header').html(response['tongsanpham']);
+                                            $('#tongtien_footer').html(response['tongtien'] + ' đ');
+                                            $('#tongtien_header').html(response['tongtien'] + ' đ');
+                                            $('#soluongsanpham' + masanpham).html(soluong);
+                                        }
+                                    });
+                                }
+                            });
+
+                        });
+
+                        $('#tinhthanh').change(function() {
+
+                            var matinh = $(this).val();
+                            $.ajax({
+                                type: "post",
+                                url: "ajax/ajax.php",
+                                data: {
+                                    type: 'gethuyen',
+                                    matinh: matinh
+                                },
+                                dataType: "html",
+                                success: function(response) {
+
+                                    $('#huyen').html(response);
+
+                                }
+                            });
+                        });
+
+                        // add to cart.-
+                        $('#checkout').submit(function(e) {
+                            e.preventDefault();
+
+                            var form = $(this);
+
+                            // update cart
+                            $.ajax({
+                                type: "post",
+                                url: "ajax/ajax.php",
+                                data: form.serialize(),
+                                dataType: "json",
+                                success: function(response) {
+
+                                    // document.location.reload(true);
+                                }
+                            });
+
+                        });
+
+
                     })(jQuery);
                 </script>
 
@@ -448,14 +410,12 @@ include("view/config/config.php");
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <button type="button" class="action-close close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-                                    <h4 class="modal-title"><a href="#" id="nameProductTop">AKG N24NC In-Ear
-                                            Noise</a></h4>
                                 </div>
                                 <div class="modal-body">
                                     <div class="product-content">
                                         <div id="messages_product_view"></div>
                                         <div class="product-view cdz-qs-view row">
-                                            <form action="#" method="post" id="addToCart">
+                                            <form action="" method="post" id="formAddToCart">
                                                 <div class="cdz-qs-image col-sm-14">
                                                     <div class="col-sm-13 product-view-media product-img-box">
                                                         <div class="row">
@@ -467,37 +427,11 @@ include("view/config/config.php");
                                                                                 <div class="rsContainer" style="transition-duration: 0s; transform: translate3d(0px, 0px, 0px); transition-timing-function: cubic-bezier(0.445, 0.05, 0.55, 0.95);">
                                                                                     <div style="left: 0px;" class="rsSlide rsActiveSlide product-image">
                                                                                         <div class="rsContent" style="visibility: visible; opacity: 1; transition: opacity 400ms ease-in-out 0s;">
-                                                                                            <div class="rs-inner"><img class="rsImg rsMainSlideImage" src="http://magento1.codazon.com/fastest/media/catalog/product/cache/34/image/1000x1231/17f82f742ffe127f42dca9de82fb58b1/t/e/tech_24_1.jpg">
-                                                                                                <div class="magnify" style="background: url(&quot;http://magento1.codazon.com/fastest/media/catalog/product/cache/34/image/1000x1231/17f82f742ffe127f42dca9de82fb58b1/t/e/tech_24_1.jpg&quot;) -165px -250px no-repeat; width: 225px; height: 225px; display: block; left: 15.9219px; top: 55.5px; opacity: 0;">
-                                                                                                </div>
+                                                                                            <div class="rs-inner">
+                                                                                                <img id="imageProduct" class="rsImg rsMainSlideImage" src="">
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
-                                                                                    <div style="left: 471px;" class="rsSlide">
-                                                                                        <div class="rsContent">
-                                                                                            <div class="rs-inner"><img class="rsImg rsMainSlideImage" src="http://magento1.codazon.com/fastest/media/catalog/product/cache/34/thumbnail/1000x1231/17f82f742ffe127f42dca9de82fb58b1/t/e/tech_24_3.jpg">
-                                                                                                <div class="magnify" style="background: url(&quot;http://magento1.codazon.com/fastest/media/catalog/product/cache/34/thumbnail/1000x1231/17f82f742ffe127f42dca9de82fb58b1/t/e/tech_24_3.jpg&quot;) 99px 54px no-repeat; width: 225px; height: 225px; display: none; left: -106.078px; top: -85.5px;">
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div style="left: -471px;" class="rsSlide">
-                                                                                        <div class="rsContent">
-                                                                                            <div class="rs-inner"><img class="rsImg rsMainSlideImage" src="http://magento1.codazon.com/fastest/media/catalog/product/cache/34/thumbnail/1000x1231/17f82f742ffe127f42dca9de82fb58b1/t/e/tech_24_4.jpg">
-                                                                                                <div class="magnify" style="background: url('http://magento1.codazon.com/fastest/media/catalog/product/cache/34/thumbnail/1000x1231/17f82f742ffe127f42dca9de82fb58b1/t/e/tech_24_4.jpg') no-repeat; width:225px; height:225px;">
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="rsFullscreenBtn">
-                                                                                    <div class="rsFullscreenIcn"></div>
-                                                                                </div>
-                                                                                <div class="rsArrow rsArrowLeft" style="display: block;">
-                                                                                    <div class="rsArrowIcn"></div>
-                                                                                </div>
-                                                                                <div class="rsArrow rsArrowRight" style="display: block;">
-                                                                                    <div class="rsArrowIcn"></div>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -544,40 +478,32 @@ include("view/config/config.php");
                                                     <div class="product-shop">
                                                         <div class="product-shop-wrap product-shop-title">
                                                             <div class="product-name">
-                                                                <h1 itemprop="name" class="product-name-h1">AKG N24NC In-Ear Noise
+                                                                <h1 itemprop="name" id="nameProductBottom" class="product-name-h1">
                                                                 </h1>
                                                             </div>
                                                             <div class="row product-rating-sku">
                                                                 <div class="col-sm-24">
                                                                     <div class="row">
                                                                         <div class="col-sm-8">
-                                                                            <h3 class="product-shop-sku"><span>SKU:
-                                                                                </span><strong>headphone_006</strong></h3>
-                                                                        </div>
-                                                                        <div class="col-sm-16">
-                                                                            <p class="no-rating"><a href="http://magento1.codazon.com/fastest/review/product/list/id/1183/#review-form">Be
-                                                                                    the first to review this product</a></p>
+                                                                            <h3 class="product-shop-sku" id="nameProductTop"></h3>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                             <div class="product-shop-wrap product-shop-price-stock">
                                                                 <div itemtype="http://schema.org/Offer" itemscope="" itemprop="offers">
-
-                                                                    <div class="product-shop-stock-avai">
-                                                                        <p class="availability in-stock"><label>Availability:
-                                                                            </label><span>In stock</span>
-                                                                        </p>
-                                                                    </div>
-
                                                                     <div class="product-shop-stock-price">
-
-
-
                                                                         <div class="price-box">
-                                                                            <span class="regular-price" id="product-price-1183">
-                                                                                <span class="price">$130.00</span> </span>
 
+                                                                            <p class="old-price">
+                                                                                <span class="price-label">Giá gốc:</span>
+                                                                                <span class="price" id="oldPriceProduct"> </span>
+                                                                            </p>
+
+                                                                            <p class="special-price">
+                                                                                <span class="price-label">Giảm giá</span>
+                                                                                <span class="price" id="newPriceProduct"> </span>
+                                                                            </p>
                                                                         </div>
 
                                                                     </div>
@@ -590,7 +516,7 @@ include("view/config/config.php");
                                                             <div class="add-to-box">
                                                                 <div class="add-to-cart">
                                                                     <div class="product-button-top">
-                                                                        <label for="qty">Qty:</label>
+                                                                        <label for="qty">Số lượng:</label>
                                                                         <div class="qty_cart">
                                                                             <div class="qty-ctl">
                                                                                 <button title="decrease" onclick="changeQty(0); return false;" class="decrease">decrease</button>
@@ -603,7 +529,7 @@ include("view/config/config.php");
 
                                                                     </div>
                                                                     <div class="product-button-bottom">
-                                                                        <button type="button" title="Add to Cart" id="product-addtocart-button" class="button btn-cart" onclick="productAddToCartForm.submit(this)"><span><span>Add
+                                                                        <button type="button" title="Add to Cart" id="product-addtocart-button" class="button btn-cart"><span><span>Add
                                                                                     to Cart</span></span></button>
                                                                     </div>
                                                                 </div>
@@ -620,8 +546,8 @@ include("view/config/config.php");
 
 
                                                                 <ul class="add-to-links">
-                                                                    <li class="wishlist"><a href="http://magento1.codazon.com/fastest/wishlist/index/add/product/1183/form_key/SlgkdUqN1kdOJo71/" onclick="productAddToCartForm.submitLight(this, this.href); return false;" class="link-wishlist">Add to Wishlist</a></li>
-                                                                    <li class="compare"><span class="separator">|</span> <a href="http://magento1.codazon.com/fastest/catalog/product_compare/add/product/1183/uenc/aHR0cDovL21hZ2VudG8xLmNvZGF6b24uY29tL2Zhc3Rlc3Qv/form_key/SlgkdUqN1kdOJo71/" class="link-compare">Add to Compare</a></li>
+                                                                    <li class="wishlist"><a href="#" onclick="productAddToCartForm.submitLight(this, this.href); return false;" class="link-wishlist">Yêu thích</a></li>
+                                                                    <li class="compare"><span class="separator">|</span> <a href="#" class="link-compare">So sánh</a></li>
                                                                 </ul>
                                                             </div>
                                                         </div>
@@ -633,27 +559,27 @@ include("view/config/config.php");
                                                             <div class="col-sm-17">
                                                                 <ul class="cdz-social-listing">
                                                                     <li class="cdz-facebook">
-                                                                        <a onclick="window.open(&quot;https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fmagento1.codazon.com%2Ffastest%2Fakg-n24nc-in-ear-noise.html%3F___SID%3DU&amp;pubid=ra-5469982e19f36f4c&amp;ct=1&amp;pco=tbxnj-1.0&quot;,&quot;&quot;,&quot;menubar=1,resizable=1,width=700,height=600&quot;)" href="javascript:void(0)" title="" class="trasition-all" data-placement="top" data-toggle="tooltip" data-original-title="Share on Facebook"><i class="fa fa-facebook"></i>
+                                                                        <a href="#" title="" class="trasition-all" data-placement="top" data-toggle="tooltip" data-original-title="Share on Facebook"><i class="fa fa-facebook"></i>
                                                                         </a>
                                                                     </li>
                                                                     <li class="twitter">
-                                                                        <a onclick="window.open(&quot;https://twitter.com/intent/tweet?url=http%3A%2F%2Fmagento1.codazon.com%2Ffastest%2Fakg-n24nc-in-ear-noise.html%3F___SID%3DU&amp;text=Nutrition+and+Dietetics+advises%3A+Cook+hard-boiled+eggs+by+bringing+them+to+a+boil%2C+then+cover+and+turn+off+heat+and+allow+them+to+sit+for+15+minutes.&amp;pubid=ra-5469982e19f36f4c&amp;ct=1&amp;pco=tbxnj-1.0&quot;,&quot;&quot;,&quot;menubar=1,resizable=1,width=700,height=600&quot;)" target="_blank" rel="nofollow" title="" href="javascript:void(0)" class="trasition-all" data-placement="top" data-toggle="tooltip" data-original-title="Share on Twitter"><i class="fa fa-twitter"></i>
+                                                                        <a target="_blank" rel="nofollow" title="" href="#" class="trasition-all" data-placement="top" data-toggle="tooltip" data-original-title="Share on Twitter"><i class="fa fa-twitter"></i>
                                                                         </a>
                                                                     </li>
                                                                     <li class="linkedin">
-                                                                        <a onclick="window.open(&quot;https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3A%2F%2Fmagento1.codazon.com%2Ffastest%2Fakg-n24nc-in-ear-noise.html%3F___SID%3DU&amp;title=AKG+N24NC+In-Ear+Noise&amp;ro=false&amp;summary=Nutrition+and+Dietetics+advises%3A+Cook+hard-boiled+eggs+by+bringing+them+to+a+boil%2C+then+cover+and+turn+off+heat+and+allow+them+to+sit+for+15+minutes.&amp;source=&quot;,&quot;&quot;,&quot;menubar=1,resizable=1,width=700,height=600&quot;)" rel="nofollow" title="" href="javascript:void(0)" class="trasition-all" data-placement="top" data-toggle="tooltip" data-original-title="Share on LinkedIn"><i class="fa fa-linkedin"></i>
+                                                                        <a rel="nofollow" title="" href="#" class="trasition-all" data-placement="top" data-toggle="tooltip" data-original-title="Share on LinkedIn"><i class="fa fa-linkedin"></i>
                                                                         </a>
                                                                     </li>
                                                                     <li class="google-plus">
-                                                                        <a onclick="window.open(&quot;https://plus.google.com/share?url=http%3A%2F%2Fmagento1.codazon.com%2Ffastest%2Fakg-n24nc-in-ear-noise.html%3F___SID%3DU&amp;pubid=ra-5469982e19f36f4c&amp;ct=1&amp;pco=tbxnj-1.0&quot;,&quot;&quot;,&quot;menubar=1,resizable=1,width=700,height=600&quot;)" rel="nofollow" title="" href="javascript:void(0)" class="trasition-all" data-placement="top" data-toggle="tooltip" data-original-title="Share on Google Plus"><i class="fa fa-google-plus"></i>
+                                                                        <a rel="nofollow" title="" href="#" class="trasition-all" data-placement="top" data-toggle="tooltip" data-original-title="Share on Google Plus"><i class="fa fa-google-plus"></i>
                                                                         </a>
                                                                     </li>
                                                                     <li class="pinterest">
-                                                                        <a onclick="window.open(&quot;https://www.pinterest.com/pin/create/button/?url=http%3A%2F%2Fmagento1.codazon.com%2Ffastest%2Fakg-n24nc-in-ear-noise.html%3F___SID%3DU&amp;media=http%3A%2F%2Fmagento1.codazon.com%2Ffastest%2Fmedia%2Fcatalog%2Fproduct%2Fcache%2F34%2Fimage%2F9df78eab33525d08d6e5fb8d27136e95%2Ft%2Fe%2Ftech_24_1.jpg&amp;description=Nutrition+and+Dietetics+advises%3A+Cook+hard-boiled+eggs+by+bringing+them+to+a+boil%2C+then+cover+and+turn+off+heat+and+allow+them+to+sit+for+15+minutes.&amp;pubid=ra-5469982e19f36f4c&amp;ct=1&amp;pco=tbxnj-1.0&quot;,&quot;&quot;,&quot;menubar=1,resizable=1,width=700,height=600&quot;)" rel="nofollow" title="" href="javascript:void(0)" class="trasition-all" data-placement="top" data-toggle="tooltip" data-original-title="Pin this"><i class="fa fa-pinterest"></i>
+                                                                        <a rel="nofollow" title="" href="#" class="trasition-all" data-placement="top" data-toggle="tooltip" data-original-title="Pin this"><i class="fa fa-pinterest"></i>
                                                                         </a>
                                                                     </li>
                                                                     <li class="email">
-                                                                        <a rel="nofollow" title="" class="trasition-all" data-placement="top" data-toggle="tooltip" data-original-title="Email to a Friend" href="http://magento1.codazon.com/fastest/sendfriend/product/send/id/1183/"><i class="fa fa-envelope"></i></a>
+                                                                        <a rel="nofollow" title="" class="trasition-all" data-placement="top" data-toggle="tooltip" data-original-title="Email to a Friend" href="#"><i class="fa fa-envelope"></i></a>
                                                                     </li>
                                                                 </ul>
                                                             </div>
@@ -663,81 +589,15 @@ include("view/config/config.php");
                                                     </div>
                                                     <div class="product-shop-wrap short-description">
                                                         <div class="short-description">
-                                                            <h2>Quick Overview</h2>
-                                                            <div class="std">Nutrition and Dietetics advises: Cook hard-boiled eggs
-                                                                by bringing them to a boil, then cover and turn off heat and allow
-                                                                them to sit for 15 minutes.</div>
+                                                            <h2>Mô tả sản phẩm</h2>
+                                                            <div class="std" id="descriptionProduct"></div>
                                                         </div>
                                                     </div>
 
                                                     <div class="clearer"></div>
-                                                    <script type="text/javascript">
-                                                        //<![CDATA[
-                                                        var productAddToCartForm = new VarienForm('product_addtocart_form');
-                                                        productAddToCartForm.submit = function(button, url) {
-                                                            if (this.validator.validate()) {
-                                                                var form = this.form;
-                                                                var oldUrl = form.action;
-
-                                                                if (url) {
-                                                                    form.action = url;
-                                                                }
-                                                                var e = null;
-                                                                try {
-                                                                    this.form.submit();
-                                                                } catch (e) {}
-                                                                this.form.action = oldUrl;
-                                                                if (e) {
-                                                                    throw e;
-                                                                }
-
-                                                                if (button && button != 'undefined') {
-                                                                    button.disabled = true;
-                                                                }
-                                                            }
-                                                        }.bind(productAddToCartForm);
-
-                                                        productAddToCartForm.submitLight = function(button, url) {
-                                                            if (this.validator) {
-                                                                var nv = Validation.methods;
-                                                                delete Validation.methods['required-entry'];
-                                                                delete Validation.methods['validate-one-required'];
-                                                                delete Validation.methods['validate-one-required-by-name'];
-                                                                // Remove custom datetime validators
-                                                                for (var methodName in Validation.methods) {
-                                                                    if (methodName.match(/^validate-datetime-.*/i)) {
-                                                                        delete Validation.methods[methodName];
-                                                                    }
-                                                                }
-
-                                                                if (this.validator.validate()) {
-                                                                    if (url) {
-                                                                        this.form.action = url;
-                                                                    }
-                                                                    this.form.submit();
-                                                                }
-                                                                Object.extend(Validation.methods, nv);
-                                                            }
-                                                        }.bind(productAddToCartForm);
-                                                        //]]>
-                                                    </script>
                                                 </div>
                                             </form>
                                         </div>
-                                        <script type="text/javascript">
-                                            if ((typeof spConfig !== 'undefined') && (typeof Product.ConfigurableSwatches !==
-                                                    'undefined')) {
-                                                var swatchesConfig = new Product.ConfigurableSwatches(spConfig);
-                                                swatchesConfig._E.activeConfigurableOptions = [];
-                                            }
-                                            if (typeof ajaxcart != 'undefined') {
-                                                productAddToCartForm.submit = function(url) {
-                                                    if (this.validator && this.validator.validate()) {
-                                                        ajaxcart.ajaxCartSubmit(this);
-                                                    }
-                                                }
-                                            }
-                                        </script>
                                     </div>
                                 </div>
                                 <div class="modal-footer">
@@ -750,11 +610,20 @@ include("view/config/config.php");
                 <!-- end show product -->
 
 
+                <div class="bootbox modal fade bootbox-confirm in" tabindex="-1" role="dialog" style="display: none; padding-right: 17px;">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-body"><button type="button" class="bootbox-close-button close" data-dismiss="modal" aria-hidden="true" style="margin-top: -10px;">×</button>
+                                <div class="bootbox-body">Are you sure you would like to remove this item from the shopping cart?</div>
+                            </div>
+                            <div class="modal-footer"><button data-bb-handler="cancel" type="button" class="btn btn-default">Cancel</button><button data-bb-handler="confirm" type="button" class="btn btn-primary">OK</button></div>
+                        </div>
+                    </div>
+                </div>
+
 
             </div>
         </div>
-    </div>
-    </div>
     </div>
 
 </body>
